@@ -17,11 +17,15 @@ int main(int argc, char** argv)
 {
 	srand((unsigned int)time(NULL));
 	RenderWindow window(VideoMode(WINDOWS_W, WINDOWS_H), "Spaceship Game!", Style::Default);
-	window.setFramerateLimit(200);
+	//window.setFramerateLimit(200);
 
-	/////////////
+	// ---------------------- Draw Color ----------------------
 	sf::CircleShape circleShape(200);
 	circleShape.setFillColor(sf::Color::Blue);
+	// ----------------------Draw Image  ----------------------
+	sf::Texture texture;
+	texture.loadFromFile("resources/player.png");
+	sf::Sprite sprite(texture);
 
 	Clock clock;
 	Time elapsed;
@@ -35,13 +39,13 @@ int main(int argc, char** argv)
 		}
 
 		elapsed = clock.getElapsedTime();
-
 		clock.restart();
 
-		//Draw ===================================================================== DRAW
+		//Draw ===================================================================== 
 		window.clear();
-		//SceneMgr::GetInstance()->Render( window);
+		
 		window.draw(circleShape);
+		window.draw(sprite);
 
 		window.display();
 	}
