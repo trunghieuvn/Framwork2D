@@ -7,6 +7,4 @@
 	```
 
 ## v0.0.1
-
-[logo]: https://github.com/trunghieuvn/Framwork2D/blob/master/release/v0.0.1/sfml-hello-world-first-load-image.png "First Build v0.0.1"
-
+![alt text](https://github.com/trunghieuvn/Framwork2D/blob/master/release/v0.0.1/sfml-hello-world-first-load-image.png "v0.0.1")
