@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 14 for Windows Desktop
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Framework2D", "Framework2D.vcxproj", "{4486DD36-D0BC-4769-B909-C20933037B9A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Framework2D", "projects\win32\Framework2D.vcxproj", "{4486DD36-D0BC-4769-B909-C20933037B9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

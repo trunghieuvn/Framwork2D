@@ -1,7 +1,7 @@
-#include <iostream>
+#include "SFML/Graphics.hpp"
 
-void main()
+int main(int argc, char** argv)
 {
-	std::cout << "hello game" << std::endl;
-	system("pause");
+	//sf::RenderWindow renderWindow(sf::VideoMode(640, 480), "Hello SFML");
+
 }
