@@ -14,6 +14,56 @@ using namespace std;
 #define FPS_LIMIT	60
 
 #define PLAYER_SPEED	370
+#define TEXTURE_PLAYER	"resources/player.png"
+
+class GameObject
+{
+public:
+	virtual void Init() = 0;
+	virtual void Update(float dt) = 0;
+	virtual void Render(RenderWindow &window) = 0;
+	sf::Texture texture;
+	sf::Sprite sprite;
+
+protected:
+	void loadTexture(const char* textureName)
+	{
+		texture.loadFromFile(textureName);
+		sprite = Sprite(texture);
+	}
+};
+
+class Player : GameObject
+{
+public:
+	void Init() override 
+	{
+		loadTexture(TEXTURE_PLAYER);
+	}
+	void Update(float dt) override
+	{
+		auto pos = sprite.getPosition();
+		if (pos.x > WINDOWS_W - texture.getSize().x)
+		{
+			dir = -1;
+		}
+		if (pos.x < 0)
+		{
+			dir = 1;
+		}
+		pos.x += PLAYER_SPEED * dt * dir;
+		std::cout << "x: " << pos.x << std::endl;
+
+		sprite.setPosition(pos);
+	}
+	void Render(RenderWindow& window) override
+	{
+		window.draw(sprite);
+	}
+private:
+	int dir = 1;
+
+};
 
 int main(int argc, char** argv)
 {
@@ -21,15 +71,9 @@ int main(int argc, char** argv)
 	RenderWindow window(VideoMode(WINDOWS_W, WINDOWS_H), "Game!", Style::Default);
 	window.setFramerateLimit(FPS_LIMIT);
 
-	// ---------------------- Draw Color ----------------------
-	sf::CircleShape circleShape(50);
-	circleShape.setFillColor(sf::Color::Blue);
-	// ----------------------Draw Image  ----------------------
-	sf::Texture texture;
-	texture.loadFromFile("resources/player.png");
-
-	sf::Sprite player(texture);
-	int dir = 1;
+	// ================================ Init ================================
+	Player player;
+	player.Init();
 
 	Clock clock;
 	Time elapsed;
@@ -49,26 +93,12 @@ int main(int argc, char** argv)
 		// Start the countdown over.  Think of laps on a stop watch.
 		clock.restart();
 
-		// ================================ Update ================================ 
-		auto pos = player.getPosition();
-		if (pos.x > WINDOWS_W - texture.getSize().x)
-		{
-			dir = -1;
-		}
-		if (pos.x < 0)
-		{
-			dir = 1;
-		}
-
-		pos.x += PLAYER_SPEED * dt * dir;
-		std::cout << "x: " << pos.x << std::endl;
-
-		player.setPosition(pos);
+		// ================================ Update  ================================ 
+		player.Update(dt);
 		
 		// ================================ Draw ================================ 
 		window.clear();
-		window.draw(circleShape);
-		window.draw(player);
+		player.Render(window);
 		
 		window.display();
 	}
