@@ -11,14 +11,14 @@ using namespace std;
 
 #define WINDOWS_W	900
 #define WINDOWS_H	600
-#define FPS_LIMIT	30
+#define FPS_LIMIT	60
 
-#define PLAYER_SPEED	150
+#define PLAYER_SPEED	370
 
 int main(int argc, char** argv)
 {
 	srand((unsigned int)time(NULL));
-	RenderWindow window(VideoMode(WINDOWS_W, WINDOWS_H), "Spaceship Game!", Style::Default);
+	RenderWindow window(VideoMode(WINDOWS_W, WINDOWS_H), "Game!", Style::Default);
 	window.setFramerateLimit(FPS_LIMIT);
 
 	// ---------------------- Draw Color ----------------------
