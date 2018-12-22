@@ -11,9 +11,9 @@ using namespace std;
 
 #define WINDOWS_W	900
 #define WINDOWS_H	600
-#define FPS_LIMIT	3030
+#define FPS_LIMIT	60
 
-#define PLAYER_SPEED	150
+#define PLAYER_SPEED	350
 #define TEXTURE_PLAYER	"resources/player.png"
 #define TEXTURE_ENEMY	"resources/a1.png"
 
@@ -111,7 +111,7 @@ public:
 		player.Init(TEXTURE_PLAYER, 300, 200);
 		for (int i = 0; i < ENEMY_COUNT; i++)
 		{
-			enemy[i].Init(TEXTURE_ENEMY, i * 100, i * 20);
+			enemy[i].Init(TEXTURE_ENEMY, i * 100, i * 50);
 		}
 	}
 	void Update(float dt) 
